@@ -22,12 +22,25 @@ public class FuelSpacecraftServiceTest {
             "1969, 654",
             "100756, 33583"
     })
-    public void shouldReturn(int mass, int expectedFuel) {
+    public void getFuelsTest(int mass, int expectedFuels) {
         // when
-        int actualFuel = fuelSpacecraftService.getFuels(mass);
+        int actualFuels = fuelSpacecraftService.getFuels(mass);
 
         // then
-        Assert.assertEquals(expectedFuel, actualFuel);
+        Assert.assertEquals(expectedFuels, actualFuels);
     }
 
+    @Test
+    @Parameters({
+            "14, 2",
+            "1969, 966",
+            "100756, 50346"
+    })
+    public void getAllRequiredFuels(int mass, int expectedFuels) {
+        // when
+        int actualFuels = fuelSpacecraftService.getAllRequiredFuels(mass);
+
+        // then
+        Assert.assertEquals(expectedFuels, actualFuels);
+    }
 }

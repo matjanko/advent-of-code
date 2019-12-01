@@ -28,15 +28,44 @@ public class FuelSpacecraftService {
     }
 
     public int getFuels(int mass) {
-        return  (int)Math.floor(mass / 3f) - 2;
+        return (int)Math.floor(mass / 3f) - 2;
     }
 
-    public int sumRequiredFuels(List<Integer> massList) {
+    public int getAllRequiredFuels(int mass) {
+        int fuels = getFuels(mass);//2
+        int fuelsMass = 0;
+        int requiredFuels = 0;
+        boolean hasNeedFuels = true;
+
+        while (hasNeedFuels) {
+            requiredFuels += fuels;
+            fuelsMass = fuels;
+            fuels = getFuels(fuelsMass);
+            if(fuels < 0) {
+                hasNeedFuels = false;
+            }
+        }
+        return requiredFuels;
+    }
+
+    public int sumFuels(List<Integer> massList) {
         int sum = 0;
-        int fuels = 0;
+        int fuels;
 
         for(Integer mass : massList) {
             fuels = getFuels(mass);
+            sum += fuels;
+        }
+
+        return sum;
+    }
+
+    public int sumAllRequiredFuels(List<Integer> massList) {
+        int sum = 0;
+        int fuels;
+
+        for(Integer mass : massList) {
+            fuels = getAllRequiredFuels(mass);
             sum += fuels;
         }
 
