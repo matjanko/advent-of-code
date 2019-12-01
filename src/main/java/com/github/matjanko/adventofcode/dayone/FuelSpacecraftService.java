@@ -49,26 +49,10 @@ public class FuelSpacecraftService {
     }
 
     public int sumFuels(List<Integer> massList) {
-        int sum = 0;
-        int fuels;
-
-        for(Integer mass : massList) {
-            fuels = getFuels(mass);
-            sum += fuels;
-        }
-
-        return sum;
+        return massList.stream().mapToInt(this::getFuels).sum();
     }
 
     public int sumAllRequiredFuels(List<Integer> massList) {
-        int sum = 0;
-        int fuels;
-
-        for(Integer mass : massList) {
-            fuels = getAllRequiredFuels(mass);
-            sum += fuels;
-        }
-
-        return sum;
+        return massList.stream().mapToInt(this::getAllRequiredFuels).sum();
     }
 }
