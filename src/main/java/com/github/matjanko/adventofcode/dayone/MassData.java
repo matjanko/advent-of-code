@@ -15,7 +15,7 @@ public class MassData {
 
     public static List<Integer> getMassList() throws IOException {
         List<Integer> massList = new ArrayList<>();
-        try (Scanner in = new Scanner(new FileReader("src/main/resources/tasks/dayOne/mass-list.txt"))) {
+        try (Scanner in = new Scanner(new FileReader("src/main/resources/tasks/day-one/mass-list.txt"))) {
             int mass;
             while (in.hasNext()) {
                 mass = Integer.parseInt(in.next());
