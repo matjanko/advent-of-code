@@ -8,15 +8,13 @@ package com.github.matjanko.adventofcode.daytwo;
 public class ProgramAlarmService {
 
     public int[] doIntcodeProgram(int[] code) {
-        for (int i = 0; i < code.length; ++i) {
+        for (int i = 0; i < code.length; i+=4) {
             if(code[i] == 99) {
                 break;
             } else if (code[i] == 1) {
                 code[code[i+3]] = code[code[i+1]] + code[code[i+2]];
-                i += 3;
             } else if (code[i] == 2) {
                 code[code[i+3]] = code[code[i+1]] * code[code[i+2]];
-                i += 3;
             }
         }
         return code;
